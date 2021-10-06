@@ -11,11 +11,21 @@ describe("Create user", () => {
   });
 
   it("Should be able to create an user", async () => {
-    await createUserService.execute({
+    const user = {
       username: "zuck",
       email: "zucknet@fa.com",
       password: "1234",
-    }) 
+    }
+
+    await createUserService.execute({
+      username: user.username,
+      email: user.email,
+      password: user.password,
+    })
+
+    const userCreated = usersRepositoryInMemory.findByEmail(user.email)
+
+    expect(userCreated).toHaveProperty("id");
   })
 
   it("Should be not able to create an user with the same email", async () => {
