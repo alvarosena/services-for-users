@@ -1,8 +1,8 @@
 import { CreateUserService } from "../../services/CreateUserService";
 import { UsersRepositoryInMemory } from "../repositoryInMemory/UsersRepositoryInMemory"
 
-let usersRepositoryInMemory: UsersRepositoryInMemory;
 let createUserService: CreateUserService;
+let usersRepositoryInMemory: UsersRepositoryInMemory;
 
 describe("Create user", () => {
   beforeEach(() => {
@@ -11,21 +11,11 @@ describe("Create user", () => {
   });
 
   it("Should be able to create an user", async () => {
-    const user = {
-      username: "zuck",
-      email: "zucknet@fa.com",
-      password: "1234",
-    }
-
     await createUserService.execute({
-      username: user.username,
-      email: user.email,
-      password: user.password,
+      username: "zuck",
+      email: "zuck.fa.com",
+      password: "1234",
     })
-
-    const userCreated = usersRepositoryInMemory.findByEmail(user.email)
-
-    expect(userCreated).toHaveProperty("id");
   })
 
   it("Should be not able to create an user with the same email", async () => {
@@ -43,4 +33,5 @@ describe("Create user", () => {
       });
     }).rejects.toBeInstanceOf(Error);
   })
-})
+  
+});
