@@ -1,5 +1,6 @@
 import { IUsersRepository } from "../repositories/IUserRepository";
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../errors/AppError";
 
 interface IRequest{
   id: string;
@@ -17,7 +18,7 @@ class UpdateUserService{
     const user = await this.usersRepository.findById(id);
 
     if(!user) {
-      throw new Error("User not found!");
+      throw new AppError("User not found!");
     }
     
     user.username = username;

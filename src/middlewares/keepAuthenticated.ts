@@ -1,3 +1,4 @@
+import { AppError } from "../errors/AppError";
 import { NextFunction, Response, Request } from "express";
 import { verify } from "jsonwebtoken";
 import { UsersRepository } from "../repositories/implementations/UsersRepository";
@@ -13,7 +14,7 @@ export async function keepAuthenticated(
   const authHeader = request.headers.authorization;
 
   if(!authHeader) {
-    throw new Error("Token is missing");
+    throw new AppError("Token is missing");
   }
 
   const [, token] = authHeader.split(" ");
@@ -26,7 +27,7 @@ export async function keepAuthenticated(
     const user = usersRespository.findById(user_id);
 
     if(!user) {
-      throw new Error("User does not exists");
+      throw new AppError("User does not exists");
     }
 
     request.user = {

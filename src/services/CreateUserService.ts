@@ -1,8 +1,8 @@
-import "reflect-metadata";
 import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../repositories/IUserRepository";
 import { ICreateUserDTO } from "../repositories/dtos/ICreateUserDTO";
 import { hash } from "bcrypt";
+import { AppError } from "../errors/AppError";
 
 @injectable()
 class CreateUserService{
@@ -15,11 +15,11 @@ class CreateUserService{
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if(userAlreadyExists) {
-      throw new Error("Email already taken!");
+      throw new AppError("Email already taken!");
     }
 
     if(!password || !email) {
-      throw new Error("Email or password is incorrect!");
+      throw new AppError("Email or password is incorrect!");
     }
 
     const hashPassword = await hash(password, 10);
