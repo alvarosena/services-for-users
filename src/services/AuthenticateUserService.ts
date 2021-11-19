@@ -28,7 +28,7 @@ class AuthenticateUserService{
     const user = await this.usersRepository.findByEmail(email);
 
     if(!user) {
-      throw new AppError("Email or password not exists");
+      throw new AppError("Email or password is incorrect");
     }
 
     const passwordMatch = compare(password, user.password);
