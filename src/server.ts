@@ -33,4 +33,4 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   })
 })
 
-app.listen(5555, () => console.log("Running in http://localhost:5555"));
+app.listen(5555, () => console.log("Running"));
