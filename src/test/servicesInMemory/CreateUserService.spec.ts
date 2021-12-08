@@ -24,14 +24,15 @@ describe("Create user", () => {
         username: "zuck",
         email: "zucknet@fa.com",
         password: "1234",
-      }) 
-  
+      })
+
       await createUserService.execute({
         username: "zuck",
         email: "zucknet@fa.com",
         password: "1234",
       });
+      console.log(createUserService);
     }).rejects.toBeInstanceOf(Error);
   })
-  
+
 });
