@@ -4,6 +4,8 @@ import cors from 'cors';
 import "express-async-errors"
 import './database';
 import "./shared/container";
+import swaggerUi from "swagger-ui-express"
+import swaggerFile from "./swagger.json";
 import { routes } from './routes';
 import { AppError } from './errors/AppError';
 
@@ -20,6 +22,7 @@ app.get('/', (request, response) => {
   ]);
 });
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof AppError) {
@@ -34,4 +37,4 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   })
 })
 
-app.listen(process.env.SERVER_PORT, () => console.log("Running"));
+app.listen(process.env.PORT || 5555, () => console.log("Running"));
