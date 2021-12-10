@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "prod": "TS_NODE=false node --optimize_for_size --max_old_space_size=920 --gc_interval=100 ./dist/src/server.js",
-    "start": "ts-node ./dist/src/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "test": "jest"
   },
