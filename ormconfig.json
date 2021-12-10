@@ -5,8 +5,12 @@
   "username": "docker",
   "password": "docker",
   "database": "api",
-  "migrations": ["./src/database/migrations/*.ts"],
-  "entities": ["./src/**/entities/*.ts"],
+  "migrations": [
+    "dist/src/database/migrations/*.js"
+  ],
+  "entities": [
+    "dist/src/**/entities/*.js"
+  ],
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
