@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "on": "docker-compose start",
+    "start": "docker-compose start",
     "off": "docker-compose stop",
     "logs": "docker logs api -f",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
