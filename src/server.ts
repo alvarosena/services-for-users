@@ -22,7 +22,7 @@ app.get('/', (request, response) => {
   ]);
 });
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof AppError) {
@@ -35,6 +35,7 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     status: "Error",
     message: `Internal server error ${err.message}`
   })
-})
+});
 
-app.listen(process.env.PORT || 5555, () => console.log("Running"));
+const port = process.env.PORT || 5555;
+app.listen(port, () => console.log("Running"));

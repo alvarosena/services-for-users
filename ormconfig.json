@@ -6,10 +6,10 @@
   "password": "docker",
   "database": "api",
   "migrations": [
-    "dist/src/database/migrations/*.js"
+    "src/database/migrations/*.ts"
   ],
   "entities": [
-    "dist/src/**/entities/*.js"
+    "src/**/entities/*.ts"
   ],
   "cli": {
     "migrationsDir": "./src/database/migrations"

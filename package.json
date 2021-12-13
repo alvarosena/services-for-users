@@ -4,8 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "on": "docker-compose start",
+    "off": "docker-compose stop",
+    "logs": "docker logs api -f",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "start": "node dist/src/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "test": "jest"
   },
