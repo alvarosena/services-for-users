@@ -103,7 +103,7 @@
         }
       }
     },
-    "/users/oauth": {
+    "/users/auth": {
       "post": {
         "tags": [
           "User"

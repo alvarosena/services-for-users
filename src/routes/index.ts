@@ -4,7 +4,7 @@ import { usersRoutes } from "./user.routes";
 
 const routes = Router();
 
-routes.use('/api/users', usersRoutes);
-routes.use('/api/users/oauth', authRoutes);
+routes.use('/users', usersRoutes);
+routes.use('/users/auth', authRoutes);
 
 export { routes }
